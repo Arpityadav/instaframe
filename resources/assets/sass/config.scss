@@ -1,0 +1,17 @@
+$main_color: #EA005E;
+
+*{
+    font-family: 'Roboto', sans-serif;
+outline: 0;
+box-shadow: 0 0 0 0;}
+
+.btn, .form-control{
+    border-radius: 0px;
+}
+
+
+.form-control:focus {
+  border-color: $main_color;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
