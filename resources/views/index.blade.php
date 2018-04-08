@@ -85,55 +85,57 @@
         </div>
     @endguest
 
-    <div class="row">
-        <div class="col-6 mx-auto">
-            <div class="card">
-                <div class="card-body">
-                    <form action="/images/update" enctype="multipart/form-data" method="POST">
-                        @csrf
+    @auth
+        <div class="row">
+            <div class="col-6 mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/images/update" enctype="multipart/form-data" method="POST">
+                            @csrf
 
-                        <div class="form-group row">
-                            <div class="col-md-10 mx-auto">
-                                <textarea class="form-control" rows="4" name="caption" placeholder="Post a new image"></textarea>
+                            <div class="form-group row">
+                                <div class="col-md-10 mx-auto">
+                                    <textarea class="form-control" rows="4" name="caption" placeholder="Post a new image"></textarea>
 
-                                <div class="mt-4 d-flex justify-content-between ">
-                                    <input type="file" name="image"></input>
-                                    <button class="btn btn-success">Post</button>
-                                </div>
-
-                                @if ($errors->any())
-                                    <div class="alert alert-danger mt-4">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
+                                    <div class="mt-4 d-flex justify-content-between ">
+                                        <input type="file" name="image"></input>
+                                        <button class="btn btn-success">Post</button>
                                     </div>
-                                @endif
+
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger mt-4">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="row mt-4">
-        <div class="col-6 mx-auto">
+        <div class="row mt-4">
+            <div class="col-6 mx-auto">
 
-            <div class="card">
-                <div class="card-header">
-                    News Feed
-                </div>
+                <div class="card">
+                    <div class="card-header">
+                        News Feed
+                    </div>
 
-                <div class="card-body">
-                    <p><a href="">Alex Garrett</a></p>
+                    <div class="card-body">
+                        <p><a href="">Alex Garrett</a></p>
 
-                    <p>Caption will go right here</p>
+                        <p>Caption will go right here</p>
 
-                    <img src="{{ asset('images/hero_image.jpg') }}" class="col-12 m-0 p-0">
+                        <img src="{{ asset('images/hero_image.jpg') }}" class="col-12 m-0 p-0">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endauth
 @endsection

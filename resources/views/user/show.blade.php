@@ -10,7 +10,6 @@
                     <div  class=" d-flex justify-content-around mx-auto flex-column ">
                         <div class="justify-content-center">
                             <h2 class="d-inline ml-5">{{ $user->username }}</h2>
-                            <button class="btn btn-info ml-5">Follow</button>
                             @if($user->id === auth()->id())
                                 <form action="/dp/update" enctype="multipart/form-data" method="POST">
                                     @csrf
@@ -19,6 +18,10 @@
                                     <input type="file">Update Profile Pic</input>
                                     <button class="btn btn-success">Upload</button>
                                 </form>
+                            @elseif(!$user->following()->where('user_id', $user->id))
+                                <a href="{{ url()->current() }}/unfollow"><button class="btn btn-info ml-5">Unfollow</button></a>
+                            @else
+                                <a href="{{ url()->current() }}/follow"><button class="btn btn-info ml-5">Follow</button></a>
                             @endif
                         </div>
 

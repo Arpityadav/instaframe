@@ -15,4 +15,30 @@ class UsersController extends Controller
     public function updateDP(User $user)
     {
     }
+
+    protected function follow(User $user)
+    {
+        $following_id = $user->id;
+        //the one we want to follow $following_id
+
+        $user = auth()->user();
+        // the current user
+
+        $user->following()->attach($user);
+
+        return redirect('/');
+    }
+
+    protected function unfollow(User $user)
+    {
+        $following_id = $user->id;
+        //the one we want to follow $following_id
+
+        $user = auth()->user();
+        // the current user
+
+        $user->following()->detach($following_id);
+
+        return redirect('/');
+    }
 }
